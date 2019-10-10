@@ -17,6 +17,7 @@ public class Invoker {
         for (Map.Entry<Date,ICommand> elem : commandList.entrySet()){
             ICommand comman = elem.getValue();
             comman.excecute();
+            System.out.println(elem.getKey().getHours()+":"+elem.getKey().getMinutes()+":"+elem.getKey().getSeconds());
         }
         commandList.clear();
     }
