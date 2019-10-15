@@ -8,7 +8,6 @@ public class Client {
          context.request();
          context.request();
          context.request();
-         context.request();
 
         try
         {
@@ -47,6 +46,7 @@ public class Client {
 
         context.request();
         state = new Bloqueado("hola");
+        context.setState(state);
         context.request();
 
 

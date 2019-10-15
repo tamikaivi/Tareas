@@ -31,13 +31,28 @@ public class Bloqueado implements IState {
                 tiempoactual = new Date().getSeconds();
                 System.out.println(tiempoactual);
                 System.out.println(tiempoDeDetenciaon);
-                //si es menor  a 0 se suma 60 y no se deja ahi
-                tiempoQueFalta = segundos - ((tiempoactual - tiempoDeDetenciaon)+60);
-                System.out.println("Ya no puedes Intentar tienes que esperar: "+tiempoQueFalta +" seg.");
+
+            if (tiempoactual - tiempoDeDetenciaon<0){
                 if(tiempoactual==0 && !puedesDesbloquear){
                     puedesDesbloquear=true;
                     nuevosIntentos=0;
                 }
+                tiempoQueFalta = segundos - ((tiempoactual - tiempoDeDetenciaon)+60);
+                System.out.println("Ya no puedes Intentar tienes que esperar: "+tiempoQueFalta +" seg.");
+                tiempoQueFalta=0;
+
+
+            }else{
+                if(tiempoactual==0 && !puedesDesbloquear){
+                    puedesDesbloquear=true;
+                    nuevosIntentos=0;
+                }
+                tiempoQueFalta = segundos - ((tiempoactual - tiempoDeDetenciaon));
+                System.out.println("Ya no puedes Intentar tienes que esperar: "+tiempoQueFalta +" seg.");
+                tiempoQueFalta=0;
+
+
+            }
         }else if(puedesDesbloquear && ! password.equals(passwordGuardado) ){
                 nuevosIntentos++;
                 puedesDesbloquear=true;
